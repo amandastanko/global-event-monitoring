@@ -12013,7 +12013,8 @@
       "license": "",
       "properties": {
         "hasLocale": false,
-        "supportMultipleMapWidgets": false
+        "supportMultipleMapWidgets": false,
+        "supportInlineEditing": false
       },
       "dependency": [
         "jimu-arcgis"
@@ -12021,6 +12022,9 @@
       "translatedLocales": [
         "en"
       ],
+      "canOutput": false,
+      "canReuseFromExisting": false,
+      "useDataSourcesEnabled": true,
       "defaultSize": {
         "width": 1280,
         "height": 64

@@ -1195,7 +1195,14 @@
       "useMapWidgetIds": [
         "widget_1"
       ],
-      "label": "gdacs-alert-ticker 3"
+      "label": "Main Alert Header",
+      "useDataSources": [
+        {
+          "dataSourceId": "dataSource_1-19e1925b9fd-layer-2",
+          "mainDataSourceId": "dataSource_1-19e1925b9fd-layer-2",
+          "rootDataSourceId": "dataSource_1"
+        }
+      ]
     },
     "widget_15": {
       "uri": "widgets/arcgis/legend/",
@@ -1916,6 +1923,13 @@
       "id": "widget_25",
       "useMapWidgetIds": [
         "widget_1"
+      ],
+      "useDataSources": [
+        {
+          "dataSourceId": "dataSource_1-19e1925b9fd-layer-2",
+          "mainDataSourceId": "dataSource_1-19e1925b9fd-layer-2",
+          "rootDataSourceId": "dataSource_1"
+        }
       ]
     }
   },
@@ -2243,7 +2257,7 @@
   "attributes": {
     "portalUrl": "https://geoxc-demox.maps.arcgis.com"
   },
-  "timestamp": 1783869450168,
+  "timestamp": 1783873700006,
   "sharedThemeVariables": {
     "header": {
       "bg": "#1a1a1a",
