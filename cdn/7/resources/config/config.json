@@ -37,7 +37,7 @@
           "gridType": 3,
           "parent": "24",
           "bbox": {
-            "width": 59.730000000000004
+            "width": 60.14
           }
         },
         "19": {
@@ -86,9 +86,9 @@
           "gridType": 3,
           "type": "WIDGET",
           "expandable": true,
-          "parent": "24",
+          "parent": "29",
           "bbox": {
-            "width": 40.269999999999996
+            "width": 100
           },
           "widgetId": "widget_23"
         },
@@ -96,11 +96,11 @@
           "gridType": 1,
           "parent": "21",
           "bbox": {
-            "width": 43.41
+            "width": 49.41
           },
           "children": [
             "13",
-            "23"
+            "29"
           ]
         },
         "25": {
@@ -127,11 +127,33 @@
           "gridType": 2,
           "parent": "21",
           "bbox": {
-            "width": 29.62
+            "width": 23.62
           },
           "children": [
             "26",
             "20"
+          ],
+          "activeTab": 1
+        },
+        "28": {
+          "gridType": 3,
+          "type": "WIDGET",
+          "expandable": true,
+          "bbox": {
+            "width": 100
+          },
+          "widgetId": "widget_26",
+          "parent": "29"
+        },
+        "29": {
+          "gridType": 2,
+          "parent": "24",
+          "bbox": {
+            "width": 39.86
+          },
+          "children": [
+            "28",
+            "23"
           ],
           "activeTab": 1
         }
@@ -460,11 +482,11 @@
           "gridType": 3,
           "type": "WIDGET",
           "expandable": true,
-          "parent": "28",
           "bbox": {
-            "width": 167.23999999999998
+            "width": 200
           },
-          "widgetId": "widget_24"
+          "widgetId": "widget_24",
+          "parent": "28"
         },
         "23": {
           "gridType": 3,
@@ -516,11 +538,12 @@
           "gridType": 2,
           "children": [
             "26",
-            "20",
-            "22"
+            "22",
+            "31",
+            "20"
           ],
           "parent": "7",
-          "activeTab": 1
+          "activeTab": 3
         },
         "29": {
           "gridType": 3,
@@ -541,6 +564,16 @@
             "width": 8.215000000000002
           },
           "widgetId": "widget_25"
+        },
+        "31": {
+          "type": "WIDGET",
+          "widgetId": "widget_26",
+          "gridType": 3,
+          "bbox": {
+            "width": 100
+          },
+          "expandable": true,
+          "parent": "28"
         }
       },
       "order": [],
@@ -707,9 +740,9 @@
           "gridType": 3,
           "type": "WIDGET",
           "expandable": true,
-          "parent": "30",
+          "parent": "32",
           "bbox": {
-            "width": 56.28
+            "width": 100
           },
           "widgetId": "widget_24"
         },
@@ -763,8 +796,30 @@
           },
           "children": [
             "13",
-            "22"
+            "32"
           ]
+        },
+        "31": {
+          "type": "WIDGET",
+          "widgetId": "widget_26",
+          "gridType": 3,
+          "parent": "32",
+          "bbox": {
+            "width": 100
+          },
+          "expandable": true
+        },
+        "32": {
+          "gridType": 2,
+          "parent": "30",
+          "bbox": {
+            "width": 56.28
+          },
+          "children": [
+            "22",
+            "31"
+          ],
+          "activeTab": 1
         }
       },
       "order": [],
@@ -907,7 +962,9 @@
           "canOverviewMap": true,
           "canSelect": true,
           "canSelectState": true,
-          "canMeasure": true
+          "canMeasure": true,
+          "canLayers": true,
+          "canFullScreen": true
         },
         "isUseCustomMapState": false,
         "initialMapDataSourceID": "dataSource_1",
@@ -1546,7 +1603,7 @@
     "widget_23": {
       "uri": "widgets/common/chart/",
       "version": "1.20.0",
-      "label": "Chart",
+      "label": "Event Types",
       "config": {
         "template": "stacked-column",
         "webChart": {
@@ -1730,7 +1787,7 @@
           "background": "var(--sys-color-surface-paper)",
           "title": {
             "type": "chartText",
-            "visible": true,
+            "visible": false,
             "content": {
               "type": "esriTS",
               "color": "var(--sys-color-surface-paper-text)",
@@ -1742,7 +1799,7 @@
                 "decoration": "none"
               },
               "horizontalAlignment": "center",
-              "text": "Events by Type"
+              "text": ""
             }
           },
           "footer": {
@@ -1831,7 +1888,7 @@
     "widget_24": {
       "uri": "widgets/arcgis/feature-info/",
       "version": "1.20.0",
-      "label": "Feature Info",
+      "label": "Event Info",
       "config": {},
       "id": "widget_24",
       "dataActions": {
@@ -1930,6 +1987,612 @@
           "mainDataSourceId": "dataSource_1-19e1925b9fd-layer-2",
           "rootDataSourceId": "dataSource_1"
         }
+      ]
+    },
+    "widget_26": {
+      "uri": "widgets/common/chart/",
+      "version": "1.20.0",
+      "label": "Events Over Time",
+      "config": {
+        "template": "smooth-line",
+        "webChart": {
+          "version": "25.0.0",
+          "id": "smooth-line",
+          "type": "chart",
+          "dataSource": {
+            "query": {
+              "groupByFieldsForStatistics": [
+                "year"
+              ],
+              "outStatistics": [
+                {
+                  "statisticType": "count",
+                  "onStatisticField": "ObjectId",
+                  "outStatisticFieldName": "count_of_ObjectId"
+                }
+              ],
+              "where": "eventtype={value}"
+            }
+          },
+          "rotated": false,
+          "colorMatch": true,
+          "stackedType": "sideBySide",
+          "series": [
+            {
+              "type": "lineSeries",
+              "id": "DR",
+              "name": "DR",
+              "x": "year",
+              "y": "ObjectId",
+              "lineSymbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": "#5E8FD0",
+                "width": 2
+              },
+              "dataLabels": {
+                "type": "chartText",
+                "visible": false,
+                "content": {
+                  "type": "esriTS",
+                  "color": "var(--sys-color-surface-paper-hint)",
+                  "font": {
+                    "family": "inherit",
+                    "size": 10,
+                    "style": "normal",
+                    "weight": "normal",
+                    "decoration": "none"
+                  },
+                  "horizontalAlignment": "center",
+                  "verticalAlignment": "top"
+                }
+              },
+              "binTemporalData": false,
+              "lineSmoothed": true,
+              "showArea": false,
+              "markerVisible": true,
+              "markerSymbol": {
+                "type": "esriSMS",
+                "style": "esriSMSCircle",
+                "color": "#5E8FD0",
+                "size": 6,
+                "outline": {
+                  "type": "esriSLS",
+                  "style": "esriSLSSolid",
+                  "color": "var(--sys-color-divider-secondary)",
+                  "width": 0
+                }
+              },
+              "dataTooltipVisible": true,
+              "query": {
+                "where": "eventtype='DR'"
+              }
+            },
+            {
+              "type": "lineSeries",
+              "id": "EQ",
+              "name": "EQ",
+              "x": "year",
+              "y": "ObjectId",
+              "lineSymbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": "#77B484",
+                "width": 2
+              },
+              "dataLabels": {
+                "type": "chartText",
+                "visible": false,
+                "content": {
+                  "type": "esriTS",
+                  "color": "var(--sys-color-surface-paper-hint)",
+                  "font": {
+                    "family": "inherit",
+                    "size": 10,
+                    "style": "normal",
+                    "weight": "normal",
+                    "decoration": "none"
+                  },
+                  "horizontalAlignment": "center",
+                  "verticalAlignment": "top"
+                }
+              },
+              "binTemporalData": false,
+              "lineSmoothed": true,
+              "showArea": false,
+              "markerVisible": true,
+              "markerSymbol": {
+                "type": "esriSMS",
+                "style": "esriSMSCircle",
+                "color": "#77B484",
+                "size": 6,
+                "outline": {
+                  "type": "esriSLS",
+                  "style": "esriSLSSolid",
+                  "color": "var(--sys-color-divider-secondary)",
+                  "width": 0
+                }
+              },
+              "dataTooltipVisible": true,
+              "query": {
+                "where": "eventtype='EQ'"
+              }
+            },
+            {
+              "type": "lineSeries",
+              "id": "FL",
+              "name": "FL",
+              "x": "year",
+              "y": "ObjectId",
+              "lineSymbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": "#DF6B35",
+                "width": 2
+              },
+              "dataLabels": {
+                "type": "chartText",
+                "visible": false,
+                "content": {
+                  "type": "esriTS",
+                  "color": "var(--sys-color-surface-paper-hint)",
+                  "font": {
+                    "family": "inherit",
+                    "size": 10,
+                    "style": "normal",
+                    "weight": "normal",
+                    "decoration": "none"
+                  },
+                  "horizontalAlignment": "center",
+                  "verticalAlignment": "top"
+                }
+              },
+              "binTemporalData": false,
+              "lineSmoothed": true,
+              "showArea": false,
+              "markerVisible": true,
+              "markerSymbol": {
+                "type": "esriSMS",
+                "style": "esriSMSCircle",
+                "color": "#DF6B35",
+                "size": 6,
+                "outline": {
+                  "type": "esriSLS",
+                  "style": "esriSLSSolid",
+                  "color": "var(--sys-color-divider-secondary)",
+                  "width": 0
+                }
+              },
+              "dataTooltipVisible": true,
+              "query": {
+                "where": "eventtype='FL'"
+              }
+            },
+            {
+              "type": "lineSeries",
+              "id": "TC",
+              "name": "TC",
+              "x": "year",
+              "y": "ObjectId",
+              "lineSymbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": "#DBCF4E",
+                "width": 2
+              },
+              "dataLabels": {
+                "type": "chartText",
+                "visible": false,
+                "content": {
+                  "type": "esriTS",
+                  "color": "var(--sys-color-surface-paper-hint)",
+                  "font": {
+                    "family": "inherit",
+                    "size": 10,
+                    "style": "normal",
+                    "weight": "normal",
+                    "decoration": "none"
+                  },
+                  "horizontalAlignment": "center",
+                  "verticalAlignment": "top"
+                }
+              },
+              "binTemporalData": false,
+              "lineSmoothed": true,
+              "showArea": false,
+              "markerVisible": true,
+              "markerSymbol": {
+                "type": "esriSMS",
+                "style": "esriSMSCircle",
+                "color": "#DBCF4E",
+                "size": 6,
+                "outline": {
+                  "type": "esriSLS",
+                  "style": "esriSLSSolid",
+                  "color": "var(--sys-color-divider-secondary)",
+                  "width": 0
+                }
+              },
+              "dataTooltipVisible": true,
+              "query": {
+                "where": "eventtype='TC'"
+              }
+            },
+            {
+              "type": "lineSeries",
+              "id": "VO",
+              "name": "VO",
+              "x": "year",
+              "y": "ObjectId",
+              "lineSymbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": "#41546D",
+                "width": 2
+              },
+              "dataLabels": {
+                "type": "chartText",
+                "visible": false,
+                "content": {
+                  "type": "esriTS",
+                  "color": "var(--sys-color-surface-paper-hint)",
+                  "font": {
+                    "family": "inherit",
+                    "size": 10,
+                    "style": "normal",
+                    "weight": "normal",
+                    "decoration": "none"
+                  },
+                  "horizontalAlignment": "center",
+                  "verticalAlignment": "top"
+                }
+              },
+              "binTemporalData": false,
+              "lineSmoothed": true,
+              "showArea": false,
+              "markerVisible": true,
+              "markerSymbol": {
+                "type": "esriSMS",
+                "style": "esriSMSCircle",
+                "color": "#41546D",
+                "size": 6,
+                "outline": {
+                  "type": "esriSLS",
+                  "style": "esriSLSSolid",
+                  "color": "var(--sys-color-divider-secondary)",
+                  "width": 0
+                }
+              },
+              "dataTooltipVisible": true,
+              "query": {
+                "where": "eventtype='VO'"
+              }
+            },
+            {
+              "type": "lineSeries",
+              "id": "WF",
+              "name": "WF",
+              "x": "year",
+              "y": "ObjectId",
+              "lineSymbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": "#8257C2",
+                "width": 2
+              },
+              "dataLabels": {
+                "type": "chartText",
+                "visible": false,
+                "content": {
+                  "type": "esriTS",
+                  "color": "var(--sys-color-surface-paper-hint)",
+                  "font": {
+                    "family": "inherit",
+                    "size": 10,
+                    "style": "normal",
+                    "weight": "normal",
+                    "decoration": "none"
+                  },
+                  "horizontalAlignment": "center",
+                  "verticalAlignment": "top"
+                }
+              },
+              "binTemporalData": false,
+              "lineSmoothed": true,
+              "showArea": false,
+              "markerVisible": true,
+              "markerSymbol": {
+                "type": "esriSMS",
+                "style": "esriSMSCircle",
+                "color": "#8257C2",
+                "size": 6,
+                "outline": {
+                  "type": "esriSLS",
+                  "style": "esriSLSSolid",
+                  "color": "var(--sys-color-divider-secondary)",
+                  "width": 0
+                }
+              },
+              "dataTooltipVisible": true,
+              "query": {
+                "where": "eventtype='WF'"
+              }
+            },
+            {
+              "type": "lineSeries",
+              "id": "__other-split-value__",
+              "name": "Undefined",
+              "x": "year",
+              "y": "ObjectId",
+              "lineSymbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": "#D6D6D6",
+                "width": 2
+              },
+              "dataLabels": {
+                "type": "chartText",
+                "visible": false,
+                "content": {
+                  "type": "esriTS",
+                  "color": "var(--sys-color-surface-paper-hint)",
+                  "font": {
+                    "family": "inherit",
+                    "size": 10,
+                    "style": "normal",
+                    "weight": "normal",
+                    "decoration": "none"
+                  },
+                  "horizontalAlignment": "center",
+                  "verticalAlignment": "top"
+                }
+              },
+              "binTemporalData": false,
+              "lineSmoothed": true,
+              "showArea": false,
+              "markerVisible": true,
+              "markerSymbol": {
+                "type": "esriSMS",
+                "style": "esriSMSCircle",
+                "color": "#5E8FD0",
+                "size": 6,
+                "outline": {
+                  "type": "esriSLS",
+                  "style": "esriSLSSolid",
+                  "color": "var(--sys-color-divider-secondary)",
+                  "width": 0
+                }
+              },
+              "dataTooltipVisible": true,
+              "query": {
+                "where": "eventtype='__other-split-value__'"
+              }
+            }
+          ],
+          "axes": [
+            {
+              "type": "chartAxis",
+              "visible": true,
+              "isLogarithmic": false,
+              "title": {
+                "type": "chartText",
+                "visible": true,
+                "content": {
+                  "type": "esriTS",
+                  "color": "var(--sys-color-surface-paper-text)",
+                  "font": {
+                    "family": "inherit",
+                    "size": 14,
+                    "style": "normal",
+                    "weight": "normal",
+                    "decoration": "none"
+                  },
+                  "horizontalAlignment": "center",
+                  "verticalAlignment": "middle",
+                  "text": "Year"
+                }
+              },
+              "labels": {
+                "type": "chartText",
+                "visible": true,
+                "content": {
+                  "type": "esriTS",
+                  "color": "var(--sys-color-surface-paper-hint)",
+                  "font": {
+                    "family": "inherit",
+                    "size": 12,
+                    "style": "normal",
+                    "weight": "normal",
+                    "decoration": "none"
+                  },
+                  "horizontalAlignment": "center",
+                  "verticalAlignment": "middle"
+                }
+              },
+              "valueFormat": {
+                "type": "number",
+                "intlOptions": {
+                  "style": "decimal",
+                  "useGrouping": false,
+                  "minimumFractionDigits": 0,
+                  "maximumFractionDigits": 0
+                }
+              },
+              "lineSymbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": "var(--sys-color-divider-primary)",
+                "width": 1
+              },
+              "grid": {
+                "type": "esriSLS",
+                "style": "esriSLSDash",
+                "color": "var(--sys-color-divider-tertiary)",
+                "width": 0
+              }
+            },
+            {
+              "type": "chartAxis",
+              "visible": true,
+              "isLogarithmic": false,
+              "title": {
+                "type": "chartText",
+                "visible": true,
+                "content": {
+                  "type": "esriTS",
+                  "color": "var(--sys-color-surface-paper-text)",
+                  "font": {
+                    "family": "inherit",
+                    "size": 14,
+                    "style": "normal",
+                    "weight": "normal",
+                    "decoration": "none"
+                  },
+                  "horizontalAlignment": "center",
+                  "verticalAlignment": "middle",
+                  "text": "Total Events"
+                }
+              },
+              "labels": {
+                "type": "chartText",
+                "visible": true,
+                "content": {
+                  "type": "esriTS",
+                  "color": "var(--sys-color-surface-paper-hint)",
+                  "font": {
+                    "family": "inherit",
+                    "size": 12,
+                    "style": "normal",
+                    "weight": "normal",
+                    "decoration": "none"
+                  },
+                  "horizontalAlignment": "center",
+                  "verticalAlignment": "middle"
+                }
+              },
+              "valueFormat": {
+                "type": "number",
+                "intlOptions": {
+                  "style": "decimal",
+                  "useGrouping": true,
+                  "minimumFractionDigits": 0,
+                  "maximumFractionDigits": 0
+                }
+              },
+              "lineSymbol": {
+                "type": "esriSLS",
+                "style": "esriSLSSolid",
+                "color": "var(--sys-color-divider-primary)",
+                "width": 1
+              },
+              "grid": {
+                "type": "esriSLS",
+                "style": "esriSLSDash",
+                "color": "var(--sys-color-divider-tertiary)",
+                "width": 0
+              }
+            }
+          ],
+          "background": "#0b1220",
+          "title": {
+            "type": "chartText",
+            "visible": false,
+            "content": {
+              "type": "esriTS",
+              "color": "var(--sys-color-surface-paper-text)",
+              "font": {
+                "family": "inherit",
+                "size": 16,
+                "style": "normal",
+                "weight": "normal",
+                "decoration": "none"
+              },
+              "horizontalAlignment": "center",
+              "text": ""
+            }
+          },
+          "footer": {
+            "type": "chartText",
+            "visible": true,
+            "content": {
+              "type": "esriTS",
+              "color": "var(--sys-color-surface-paper-hint)",
+              "font": {
+                "family": "inherit",
+                "size": 12,
+                "style": "normal",
+                "weight": "normal",
+                "decoration": "none"
+              },
+              "horizontalAlignment": "center",
+              "text": ""
+            }
+          },
+          "legend": {
+            "type": "chartLegend",
+            "visible": true,
+            "title": {
+              "type": "chartText",
+              "visible": true,
+              "content": {
+                "type": "esriTS",
+                "color": "var(--sys-color-surface-paper-text)",
+                "font": {
+                  "family": "inherit",
+                  "size": 14,
+                  "style": "normal",
+                  "weight": "normal",
+                  "decoration": "none"
+                },
+                "horizontalAlignment": "center",
+                "text": ""
+              }
+            },
+            "body": {
+              "type": "esriTS",
+              "color": "var(--sys-color-surface-paper-text)",
+              "font": {
+                "family": "inherit",
+                "size": 12,
+                "style": "normal",
+                "weight": "normal",
+                "decoration": "none"
+              },
+              "horizontalAlignment": "center",
+              "text": ""
+            },
+            "position": "bottom"
+          },
+          "orderOptions": {
+            "data": {
+              "orderType": "arcgis-charts-category",
+              "orderBy": "ASC",
+              "preferLabel": true
+            }
+          }
+        },
+        "tools": {
+          "cursorEnable": true
+        },
+        "options": {
+          "hideEmptySeries": false
+        }
+      },
+      "id": "widget_26",
+      "useDataSources": [
+        {
+          "dataSourceId": "dataSource_1-19f57f8a994-layer-5",
+          "mainDataSourceId": "dataSource_1-19f57f8a994-layer-5",
+          "rootDataSourceId": "dataSource_1",
+          "fields": [
+            "year",
+            "ObjectId",
+            "eventtype"
+          ]
+        }
+      ],
+      "outputDataSources": [
+        "widget_26_output"
       ]
     }
   },
@@ -2126,6 +2789,61 @@
           ]
         }
       ]
+    },
+    "messageConfig_5": {
+      "id": "messageConfig_5",
+      "widgetId": "widget_26",
+      "messageType": "DATA_RECORDS_SELECTION_CHANGE",
+      "actions": [
+        {
+          "actionId": "filter-data-record-action-1783724401586",
+          "sectionId": null,
+          "messageWidgetId": "widget_26",
+          "actionName": "filter data record action",
+          "description": null,
+          "config": {
+            "messageUseDataSource": {
+              "dataSourceId": "widget_23_output",
+              "mainDataSourceId": "widget_23_output",
+              "rootDataSourceId": null,
+              "fields": [
+                "eventtype"
+              ]
+            },
+            "actionUseDataSource": {
+              "dataSourceId": "dataSource_1-19e1925b9fd-layer-2",
+              "mainDataSourceId": "dataSource_1-19e1925b9fd-layer-2",
+              "rootDataSourceId": "dataSource_1",
+              "fields": [
+                "eventtype"
+              ]
+            },
+            "sqlExprObj": null,
+            "enabledDataRelationShip": true,
+            "enableQueryWithCurrentExtent": true,
+            "connectionType": null
+          },
+          "version": "1.20.0",
+          "useDataSources": [
+            {
+              "dataSourceId": "widget_26_output",
+              "mainDataSourceId": "widget_26_output",
+              "rootDataSourceId": null,
+              "fields": [
+                "eventtype"
+              ]
+            },
+            {
+              "dataSourceId": "dataSource_1-19e1925b9fd-layer-2",
+              "mainDataSourceId": "dataSource_1-19e1925b9fd-layer-2",
+              "rootDataSourceId": "dataSource_1",
+              "fields": [
+                "eventtype"
+              ]
+            }
+          ]
+        }
+      ]
     }
   },
   "pageStructure": [
@@ -2257,7 +2975,7 @@
   "attributes": {
     "portalUrl": "https://geoxc-demox.maps.arcgis.com"
   },
-  "timestamp": 1783873700006,
+  "timestamp": 1783888494391,
   "sharedThemeVariables": {
     "header": {
       "bg": "#1a1a1a",
@@ -2285,7 +3003,7 @@
     "widget_23_output": {
       "id": "widget_23_output",
       "type": "FEATURE_LAYER",
-      "label": "Chart statistics",
+      "label": "Event Types statistics",
       "originDataSources": [
         {
           "dataSourceId": "dataSource_1-19e1925b9fd-layer-2",
@@ -2297,7 +3015,7 @@
       "isDataInDataSourceInstance": true,
       "schema": {
         "idField": "__outputid__",
-        "label": "Chart statistics",
+        "label": "Event Types statistics",
         "fields": {
           "__outputid__": {
             "jimuName": "__outputid__",
@@ -2330,6 +3048,152 @@
             },
             "originFields": [
               "OBJECTID"
+            ]
+          }
+        }
+      }
+    },
+    "widget_26_output": {
+      "id": "widget_26_output",
+      "type": "FEATURE_LAYER",
+      "label": "Events Over Time statistics",
+      "originDataSources": [
+        {
+          "dataSourceId": "dataSource_1-19f57f8a994-layer-5",
+          "mainDataSourceId": "dataSource_1-19f57f8a994-layer-5",
+          "rootDataSourceId": "dataSource_1"
+        }
+      ],
+      "isOutputFromWidget": true,
+      "isDataInDataSourceInstance": true,
+      "schema": {
+        "idField": "__outputid__",
+        "label": "Events Over Time statistics",
+        "fields": {
+          "__outputid__": {
+            "jimuName": "__outputid__",
+            "alias": "OBJECTID",
+            "type": "NUMBER",
+            "esriType": "esriFieldTypeOID",
+            "name": "__outputid__"
+          },
+          "year": {
+            "jimuName": "year",
+            "name": "year",
+            "type": "NUMBER",
+            "esriType": "esriFieldTypeInteger",
+            "alias": "Year",
+            "fieldFormat": {
+              "type": "number",
+              "maximumFractionDigits": 2,
+              "minimumFractionDigits": 0,
+              "style": "decimal",
+              "useGrouping": "never"
+            },
+            "originFields": [
+              "year"
+            ]
+          },
+          "count_of_ObjectId_of_DR": {
+            "jimuName": "count_of_ObjectId_of_DR",
+            "name": "count_of_ObjectId_of_DR",
+            "type": "NUMBER",
+            "esriType": "esriFieldTypeInteger",
+            "alias": "Count of Object ID of DR",
+            "fieldFormat": {
+              "type": "number",
+              "useGrouping": "never",
+              "minimumFractionDigits": 0,
+              "maximumFractionDigits": 0
+            },
+            "originFields": [
+              "ObjectId",
+              "eventtype"
+            ]
+          },
+          "count_of_ObjectId_of_EQ": {
+            "jimuName": "count_of_ObjectId_of_EQ",
+            "name": "count_of_ObjectId_of_EQ",
+            "type": "NUMBER",
+            "esriType": "esriFieldTypeInteger",
+            "alias": "Count of Object ID of EQ",
+            "fieldFormat": {
+              "type": "number",
+              "useGrouping": "never",
+              "minimumFractionDigits": 0,
+              "maximumFractionDigits": 0
+            },
+            "originFields": [
+              "ObjectId",
+              "eventtype"
+            ]
+          },
+          "count_of_ObjectId_of_FL": {
+            "jimuName": "count_of_ObjectId_of_FL",
+            "name": "count_of_ObjectId_of_FL",
+            "type": "NUMBER",
+            "esriType": "esriFieldTypeInteger",
+            "alias": "Count of Object ID of FL",
+            "fieldFormat": {
+              "type": "number",
+              "useGrouping": "never",
+              "minimumFractionDigits": 0,
+              "maximumFractionDigits": 0
+            },
+            "originFields": [
+              "ObjectId",
+              "eventtype"
+            ]
+          },
+          "count_of_ObjectId_of_TC": {
+            "jimuName": "count_of_ObjectId_of_TC",
+            "name": "count_of_ObjectId_of_TC",
+            "type": "NUMBER",
+            "esriType": "esriFieldTypeInteger",
+            "alias": "Count of Object ID of TC",
+            "fieldFormat": {
+              "type": "number",
+              "useGrouping": "never",
+              "minimumFractionDigits": 0,
+              "maximumFractionDigits": 0
+            },
+            "originFields": [
+              "ObjectId",
+              "eventtype"
+            ]
+          },
+          "count_of_ObjectId_of_VO": {
+            "jimuName": "count_of_ObjectId_of_VO",
+            "name": "count_of_ObjectId_of_VO",
+            "type": "NUMBER",
+            "esriType": "esriFieldTypeInteger",
+            "alias": "Count of Object ID of VO",
+            "fieldFormat": {
+              "type": "number",
+              "useGrouping": "never",
+              "minimumFractionDigits": 0,
+              "maximumFractionDigits": 0
+            },
+            "originFields": [
+              "ObjectId",
+              "eventtype"
+            ]
+          },
+          "count_of_ObjectId_of_WF": {
+            "jimuName": "count_of_ObjectId_of_WF",
+            "name": "count_of_ObjectId_of_WF",
+            "type": "NUMBER",
+            "esriType": "esriFieldTypeInteger",
+            "alias": "Count of Object ID of WF",
+            "fieldFormat": {
+              "type": "number",
+              "useGrouping": "never",
+              "minimumFractionDigits": 0,
+              "maximumFractionDigits": 0
+            },
+            "originFields": [
+              "ObjectId",
+              "eventtype"
             ]
           }
         }
