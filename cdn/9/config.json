@@ -27,7 +27,7 @@
             "width": 100
           },
           "children": [
-            "19",
+            "31",
             "21"
           ]
         },
@@ -39,16 +39,6 @@
           "bbox": {
             "width": 52.08
           }
-        },
-        "19": {
-          "gridType": 3,
-          "type": "WIDGET",
-          "expandable": true,
-          "parent": "7",
-          "bbox": {
-            "width": 10.469999999999997
-          },
-          "widgetId": "widget_14"
         },
         "20": {
           "gridType": 3,
@@ -167,6 +157,16 @@
           },
           "widgetId": "widget_27",
           "parent": "29"
+        },
+        "31": {
+          "type": "WIDGET",
+          "widgetId": "widget_28",
+          "gridType": 3,
+          "parent": "7",
+          "bbox": {
+            "width": 10.469999999999997
+          },
+          "expandable": true
         }
       },
       "order": [],
@@ -453,7 +453,6 @@
             "width": 100
           },
           "children": [
-            "30",
             "13",
             "28"
           ]
@@ -464,7 +463,7 @@
           "gridType": 3,
           "parent": "7",
           "bbox": {
-            "width": 50.225
+            "width": 58.440000000000005
           }
         },
         "20": {
@@ -555,26 +554,6 @@
           ],
           "parent": "7",
           "activeTab": 3
-        },
-        "29": {
-          "gridType": 3,
-          "type": "WIDGET",
-          "expandable": true,
-          "bbox": {
-            "width": 14.294999999999998
-          },
-          "widgetId": "widget_14",
-          "isPending": true
-        },
-        "30": {
-          "gridType": 3,
-          "type": "WIDGET",
-          "expandable": true,
-          "parent": "7",
-          "bbox": {
-            "width": 8.215000000000002
-          },
-          "widgetId": "widget_25"
         },
         "31": {
           "type": "WIDGET",
@@ -702,7 +681,7 @@
             "width": 100
           },
           "children": [
-            "28",
+            "33",
             "21"
           ]
         },
@@ -715,16 +694,6 @@
           },
           "parent": "30",
           "expandable": true
-        },
-        "19": {
-          "gridType": 3,
-          "type": "WIDGET",
-          "expandable": true,
-          "bbox": {
-            "width": 5.2349999999999985
-          },
-          "widgetId": "widget_14",
-          "isPending": true
         },
         "20": {
           "gridType": 3,
@@ -777,16 +746,6 @@
           "widgetId": "widget_17",
           "parent": "29"
         },
-        "28": {
-          "type": "WIDGET",
-          "widgetId": "widget_25",
-          "gridType": 3,
-          "parent": "7",
-          "bbox": {
-            "width": 5.2349999999999985
-          },
-          "expandable": true
-        },
         "29": {
           "gridType": 2,
           "parent": "21",
@@ -831,6 +790,16 @@
             "31"
           ],
           "activeTab": 1
+        },
+        "33": {
+          "type": "WIDGET",
+          "widgetId": "widget_29",
+          "gridType": 3,
+          "parent": "7",
+          "bbox": {
+            "width": 5.2349999999999985
+          },
+          "expandable": true
         }
       },
       "order": [],
@@ -1243,33 +1212,6 @@
       },
       "id": "widget_13",
       "label": "Text 3"
-    },
-    "widget_14": {
-      "uri": "widgets/gdacs-alert-ticker/",
-      "version": "1.0.0",
-      "config": {
-        "layerUrl": "https://services6.arcgis.com/u2Q4oAfciDZpDAD8/arcgis/rest/services/GDACSfeed/FeatureServer/0",
-        "refreshSeconds": 300,
-        "speedPxPerSec": 55,
-        "maxEvents": 25,
-        "scoreField": "alertscore",
-        "panOnClick": true,
-        "openPopupOnClick": false,
-        "zoomScale": 20000000,
-        "compactMode": false
-      },
-      "id": "widget_14",
-      "useMapWidgetIds": [
-        "widget_1"
-      ],
-      "label": "Main Alert Header",
-      "useDataSources": [
-        {
-          "dataSourceId": "dataSource_1-19f719728bf-layer-6",
-          "mainDataSourceId": "dataSource_1-19f719728bf-layer-6",
-          "rootDataSourceId": "dataSource_1"
-        }
-      ]
     },
     "widget_15": {
       "uri": "widgets/arcgis/legend/",
@@ -1973,33 +1915,6 @@
       },
       "useMapWidgetIds": [
         "widget_1"
-      ]
-    },
-    "widget_25": {
-      "uri": "widgets/gdacs-alert-ticker/",
-      "version": "1.0.0",
-      "label": "gdacs-alert-ticker 2",
-      "config": {
-        "layerUrl": "https://services6.arcgis.com/u2Q4oAfciDZpDAD8/arcgis/rest/services/GDACSfeed/FeatureServer/0",
-        "refreshSeconds": 300,
-        "speedPxPerSec": 55,
-        "maxEvents": 25,
-        "scoreField": "alertscore",
-        "panOnClick": true,
-        "openPopupOnClick": false,
-        "zoomScale": 20000000,
-        "compactMode": true
-      },
-      "id": "widget_25",
-      "useMapWidgetIds": [
-        "widget_1"
-      ],
-      "useDataSources": [
-        {
-          "dataSourceId": "dataSource_1-19f719728bf-layer-6",
-          "mainDataSourceId": "dataSource_1-19f719728bf-layer-6",
-          "rootDataSourceId": "dataSource_1"
-        }
       ]
     },
     "widget_26": {
@@ -3215,6 +3130,60 @@
       "outputDataSources": [
         "widget_27_output"
       ]
+    },
+    "widget_28": {
+      "uri": "widgets/gdacs-alert-ticker/",
+      "version": "1.0.0",
+      "label": "Header Alert Ticker",
+      "config": {
+        "layerUrl": "https://services6.arcgis.com/u2Q4oAfciDZpDAD8/arcgis/rest/services/Global_Disaster_Alerts_and_Coordination_System_Feed/FeatureServer/0",
+        "refreshSeconds": 300,
+        "speedPxPerSec": 55,
+        "maxEvents": 25,
+        "scoreField": "alertscore",
+        "panOnClick": true,
+        "openPopupOnClick": false,
+        "zoomScale": 20000000,
+        "compactMode": false
+      },
+      "id": "widget_28",
+      "useMapWidgetIds": [
+        "widget_1"
+      ],
+      "useDataSources": [
+        {
+          "dataSourceId": "dataSource_1-19f719728bf-layer-6",
+          "mainDataSourceId": "dataSource_1-19f719728bf-layer-6",
+          "rootDataSourceId": "dataSource_1"
+        }
+      ]
+    },
+    "widget_29": {
+      "uri": "widgets/gdacs-alert-ticker/",
+      "version": "1.0.0",
+      "label": "Alert Ticker compact",
+      "config": {
+        "layerUrl": "https://services6.arcgis.com/u2Q4oAfciDZpDAD8/arcgis/rest/services/Global_Disaster_Alerts_and_Coordination_System_Feed/FeatureServer/0",
+        "refreshSeconds": 300,
+        "speedPxPerSec": 55,
+        "maxEvents": 25,
+        "scoreField": "alertscore",
+        "panOnClick": true,
+        "openPopupOnClick": false,
+        "zoomScale": 20000000,
+        "compactMode": true
+      },
+      "id": "widget_29",
+      "useMapWidgetIds": [
+        "widget_1"
+      ],
+      "useDataSources": [
+        {
+          "dataSourceId": "dataSource_1-19f719728bf-layer-6",
+          "mainDataSourceId": "dataSource_1-19f719728bf-layer-6",
+          "rootDataSourceId": "dataSource_1"
+        }
+      ]
     }
   },
   "widgetsManifest": {},
@@ -3722,18 +3691,18 @@
       }
     }
   },
-  "publishTimestamp": 1784323857305,
+  "publishTimestamp": 1784326835279,
   "attributes": {
     "portalUrl": "https://geoxc-demox.maps.arcgis.com",
     "isWebTier": false,
-    "clientId": "",
+    "clientId": "lAhJRHkl4kS2rI1a",
     "express": false,
     "title": "Live Global Event Monitoring",
     "description": "",
     "type": "Web Experience",
     "thumbnail": "thumbnail/thumbnail1783869597388.png"
   },
-  "timestamp": 1784323856579,
+  "timestamp": 1784326834357,
   "sharedThemeVariables": {
     "header": {
       "bg": "#1a1a1a",
@@ -3838,15 +3807,6 @@
               }
             }
           }
-        },
-        "19e1925b9fd-layer-2": {
-          "id": "dataSource_1-19e1925b9fd-layer-2",
-          "type": "FEATURE_LAYER",
-          "sourceLabel": "GDACS Epicenter of Event",
-          "portalUrl": "https://www.arcgis.com",
-          "itemId": "773f1e5e470546be897bab4acd1d4a7d",
-          "layerId": "0",
-          "url": "https://services6.arcgis.com/u2Q4oAfciDZpDAD8/arcgis/rest/services/GDACSfeed/FeatureServer/0"
         },
         "19e1e4b7fde-layer-4": {
           "id": "dataSource_1-19e1e4b7fde-layer-4",
