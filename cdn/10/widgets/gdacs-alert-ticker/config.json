@@ -1,0 +1,11 @@
+{
+  "layerUrl": "https://services6.arcgis.com/u2Q4oAfciDZpDAD8/arcgis/rest/services/Global_Disaster_Alerts_and_Coordination_System_Feed/FeatureServer/0",
+  "refreshSeconds": 300,
+  "speedPxPerSec": 55,
+  "maxEvents": 25,
+  "scoreField": "alertscore",
+  "panOnClick": true,
+  "openPopupOnClick": true,
+  "zoomScale": 20000000,
+  "compactMode": false
+}
